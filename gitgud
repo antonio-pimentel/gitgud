@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+
+# sudo ln -s <full path to this file> /usr/local/bin/gitgud
+# chmod +x <full path to this file>
+
+cd <full path to cvs repo>
+
+set pass "<my password>\r"
+
+set command [lrange $argv 0 end]
+
+eval spawn cvs $command
+
+expect "Password: "
+send "$pass";
+
+interact
